@@ -12,19 +12,16 @@ public class HelloWorldTest {
     @Test
 
     public void testRestAssured() {
-        Map<String, String> params = new HashMap<>();
-        params.put("name", "Anna");
-        JsonPath response = RestAssured
+        Map<String, Object> body = new HashMap<>();
+        body.put("param1", "value1");
+        body.put("param2", "value2");
+        Response response = RestAssured
                 .given()
-                .queryParams(params)
-                .get("https://playground.learnqa.ru/api/hello")
-                .jsonPath();
+                .body(body)
+                .post("https://playground.learnqa.ru/api/check_type")
+                .andReturn();
 
-        String name = response.get("answer1");
-        if (name == null){
-            System.out.println("Are you kidding me?");
-        } else {
-            System.out.println(name);
-        }
+        response.print();
     }
 }
+
