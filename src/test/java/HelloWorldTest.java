@@ -1,3 +1,4 @@
+import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 import io.restassured.response.Response;
@@ -12,16 +13,20 @@ public class HelloWorldTest {
     @Test
 
     public void testRestAssured() {
-        Map<String, Object> body = new HashMap<>();
-        body.put("param1", "value1");
-        body.put("param2", "value2");
+        Map<String, String> headers = new HashMap<>();
+        headers.put("header1", "value1");
+        headers.put("header2", "value2");
         Response response = RestAssured
                 .given()
-                .body(body)
-                .post("https://playground.learnqa.ru/api/check_type")
+                .redirects()
+                .follow(false)
+                .when()
+                .get("https://playground.learnqa.ru/api/get_303")
                 .andReturn();
 
-        response.print();
+        response.prettyPrint();
+        String locationHeader = response.getHeader("Location");
+        System.out.println(locationHeader);
     }
 }
 
