@@ -1,7 +1,5 @@
 import io.restassured.RestAssured;
-import io.restassured.internal.common.assertion.Assertion;
 import io.restassured.path.json.JsonPath;
-import org.hamcrest.comparator.ComparatorMatcherBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
