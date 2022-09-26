@@ -1,4 +1,7 @@
+package tests;
+
 import io.restassured.RestAssured;
+import io.restassured.internal.common.assertion.Assertion;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +38,8 @@ public class ManyRedirectsTest {
             System.out.println(locationHeader);
             statusCode = response.getStatusCode();
             System.out.println(statusCode);
-        }
 
+
+        }
     }
 }

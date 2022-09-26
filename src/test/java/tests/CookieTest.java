@@ -1,3 +1,5 @@
+package tests;
+
 import io.restassured.RestAssured;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
@@ -6,25 +8,20 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class HeaderTest {
-
+public class CookieTest {
     @Test
-    public void testHeader() {
+    public void testCookie() {
         Response response = RestAssured
-                .get("https://playground.learnqa.ru/api/homework_header")
+                .get("https://playground.learnqa.ru/api/homework_cookie")
                 .andReturn();
 
 
         Headers responseHeaders = response.getHeaders();
         System.out.println(responseHeaders);
+        String cookie = response.cookie("HomeWork");
+        System.out.println(cookie);
 
-        String secretHeader = response.getHeader("x-secret-homework-header");
-        System.out.println(secretHeader);
-
-
-        assertEquals("Some secret value", secretHeader, "unexpected header");
+        assertEquals("hw_value", cookie, "unexpected cookie");
 
     }
 }
-
-

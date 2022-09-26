@@ -1,8 +1,8 @@
-import io.restassured.http.Headers;
-import io.restassured.path.json.JsonPath;
-import org.junit.jupiter.api.Test;
-import io.restassured.response.Response;
+package tests;
+
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
